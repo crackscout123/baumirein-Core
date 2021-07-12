@@ -1,0 +1,31 @@
+name: baumirein-Core
+version: 1.5-Alpha
+author: baumirein
+main: de.baumirein.Main
+
+commands:
+  invsee:
+  trade:
+  tpd:
+  tpr:
+  tpa:
+  home:
+  sethome:
+  sun:
+  go:
+  set:
+  ping:
+  warps:
+  heal:
+  fly:
+  troll:
+  vanish:
+    aliases: [v,spectator]
+  gamemode:
+    aliases: [gm,gmode]
+  craft:
+    aliases: [wb,workbench]
+  enderchest:
+    aliases: [ec,ender]
+  repair:
+    aliases: [fix,fixall]
