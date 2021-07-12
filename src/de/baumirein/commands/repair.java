@@ -50,6 +50,7 @@ public class repair implements CommandExecutor {
 		return false;
 	}
 	
+	@SuppressWarnings("deprecation")
 	public void repairAll(Player p) {
 
 

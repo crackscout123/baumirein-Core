@@ -1,9 +1,13 @@
 package de.baumirein.listener;
 
+import org.bukkit.Location;
+import org.bukkit.entity.EntityType;
+import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -26,14 +30,28 @@ public class PlayerEvents implements Listener {
 		e.setCancelled(false);
 	}
 	
-	
+	//Change zombie Villager spawnrate
+	@EventHandler
+	public void onVillagerDeath(EntityDamageByEntityEvent e) {
+		if(!(e.getEntity() instanceof org.bukkit.entity.Villager)) 
+			return;
+		if(e.getDamager() instanceof org.bukkit.entity.Zombie || e.getDamager() instanceof org.bukkit.entity.ZombieVillager) {
+			LivingEntity villager = (LivingEntity) e.getEntity();
+			if(villager.getHealth() <= e.getDamage()) {
+				Location loc = e.getEntity().getLocation();
+				loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE_VILLAGER);
+			}
+			return;
+		}
+	}
 	
 	//PlayerJoin Event
+	@SuppressWarnings("deprecation")
 	@EventHandler(priority = EventPriority.HIGHEST)
 	public void onPlayerJoin(PlayerJoinEvent e){
 		Player p = (Player)e.getPlayer();
 		p.setHealth(20D);
-		p.setMaxHealth(20D);
+		p.setMaxHealth(20.0D);
 		p.sendMessage("§4ACHTUNG: §7/trade §cist buggy, Items können sich wegbuggen! Benutzen auf eigene Gefahr!");
 		p.sendMessage("§cDieser bug tritt nur auf wenn mehrere Spieler gleichzeitig auf die §7Trade-Kiste §czugreifen.");
 		

@@ -15,6 +15,7 @@ public class vanish implements CommandExecutor {
 
 	public static ArrayList<Player> vanished = new ArrayList<>();
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender s, Command c, String l, String[] a) {
 			if(s instanceof Player) {
