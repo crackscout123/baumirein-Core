@@ -28,6 +28,7 @@ import de.baumirein.commands.warps.set_homes;
 import de.baumirein.commands.warps.warps;
 import de.baumirein.debug.ping;
 import de.baumirein.listener.PlayerEvents;
+import de.baumirein.listener.VillagerKilledEvent;
 import de.baumirein.listener.onDeath;
 import de.baumirein.listener.onExplode;
 
@@ -62,6 +63,7 @@ public class Main extends JavaPlugin implements Listener{
 		Bukkit.getPluginManager().registerEvents(new cmd_trade(), this);
 		Bukkit.getPluginManager().registerEvents(new onExplode(), this);
 		Bukkit.getPluginManager().registerEvents(new PlayerEvents(), this);
+		Bukkit.getPluginManager().registerEvents(new VillagerKilledEvent(), this);
 	}
 	
 	@Override

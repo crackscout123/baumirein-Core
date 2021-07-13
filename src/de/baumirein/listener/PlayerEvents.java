@@ -1,13 +1,11 @@
 package de.baumirein.listener;
 
-import org.bukkit.Location;
-import org.bukkit.entity.EntityType;
-import org.bukkit.entity.LivingEntity;
+import org.bukkit.entity.Damageable;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.entity.EntityDamageByEntityEvent;
+import org.bukkit.event.entity.EntityTransformEvent;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.event.player.PlayerCommandPreprocessEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
@@ -20,6 +18,9 @@ import net.md_5.bungee.api.chat.TextComponent;
 
 public class PlayerEvents implements Listener {
 
+	// Villager to VillagerZombie infection rate
+	private int infectionRate = 100;
+	
 	@EventHandler
 	public void onDamage(FoodLevelChangeEvent e){
 		e.setCancelled(false);
@@ -31,17 +32,31 @@ public class PlayerEvents implements Listener {
 	}
 	
 	//Change zombie Villager spawnrate
+//	@EventHandler
+//	public void onVillagerDeath(EntityDamageByEntityEvent e) {
+//		if(!(e.getEntity() instanceof org.bukkit.entity.Villager)) 
+//			return;
+//		if(e.getDamager() instanceof org.bukkit.entity.Zombie || e.getDamager() instanceof org.bukkit.entity.ZombieVillager) {
+//			LivingEntity villager = (LivingEntity) e.getEntity();
+//			if(villager.getHealth() <= e.getDamage()) {
+//				Location loc = e.getEntity().getLocation();
+//				loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE_VILLAGER);
+//			}
+//			return;
+//		}
+//	}
+	
+	//Turn Villager into ZOmbieVillager by a given percentage
 	@EventHandler
-	public void onVillagerDeath(EntityDamageByEntityEvent e) {
-		if(!(e.getEntity() instanceof org.bukkit.entity.Villager)) 
+	public void onKill(EntityTransformEvent e) {
+		System.out.println("debug0");
+		if (!e.getTransformReason().equals(EntityTransformEvent.TransformReason.INFECTION)) {
 			return;
-		if(e.getDamager() instanceof org.bukkit.entity.Zombie || e.getDamager() instanceof org.bukkit.entity.ZombieVillager) {
-			LivingEntity villager = (LivingEntity) e.getEntity();
-			if(villager.getHealth() <= e.getDamage()) {
-				Location loc = e.getEntity().getLocation();
-				loc.getWorld().spawnEntity(loc, EntityType.ZOMBIE_VILLAGER);
-			}
-			return;
+		}
+		int random = (int)(Math.random() * 101.0D + 0.0D);
+		if(random > this.infectionRate) {
+			Damageable villager = (Damageable)e.getTransformedEntity();
+			villager.setHealth(0.0D);
 		}
 	}
 	
