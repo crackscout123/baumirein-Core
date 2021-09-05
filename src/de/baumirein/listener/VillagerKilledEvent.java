@@ -16,13 +16,26 @@ public class VillagerKilledEvent implements Listener {
 			return;
 		}
 		int random = (int)(Math.random() * 101.0D + 0.0D);
-		System.out.println("debug2");
+		System.out.println("debug2 " +random);
 		if(random > this.infectionRate) {
 			Damageable villager = (Damageable)e.getTransformedEntity();
 			villager.setHealth(0.0D);
 			System.out.println("debug3");
 		}
 	}
+	
+//	@EventHandler 
+//	public void onEntityDamage(EntityDamageByEntityEvent e) {
+//		if(e.getEntity() instanceof org.bukkit.entity.Villager) {
+//			Damageable villager = (Damageable) e.getEntity();
+//			World world = e.getEntity().getWorld();
+//			
+//			ZombieVillager vz;
+//			vz.getPersistentDataContainer().set(villager.getPersistentDataContainer().getKeys(), villager.getPersistentDataContainer(), null);
+//			
+//			
+//		}
+//	}
 
 }
 
