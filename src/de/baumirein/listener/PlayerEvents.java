@@ -62,8 +62,8 @@ public class PlayerEvents implements Listener {
 		Player p = (Player)e.getPlayer();
 		p.setHealth(20D);
 		p.setMaxHealth(20.0D);
-		p.sendMessage("§4ACHTUNG: §7/trade §cist buggy, Items können sich wegbuggen! Benutzen auf eigene Gefahr!");
-		p.sendMessage("§cDieser bug tritt nur auf wenn mehrere Spieler gleichzeitig auf die §7Trade-Kiste §czugreifen.");
+//		p.sendMessage("§4ACHTUNG: §7/trade §cist buggy, Items können sich wegbuggen! Benutzen auf eigene Gefahr!");
+//		p.sendMessage("§cDieser bug tritt nur auf wenn mehrere Spieler gleichzeitig auf die §7Trade-Kiste §czugreifen.");
 		
 		
 //		if(p.hasPermission("baumirein.tablist.admin")){

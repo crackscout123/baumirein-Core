@@ -19,7 +19,7 @@ public class home implements CommandExecutor {
 				Player p = (Player)s;
 				try {
 					p.teleport(cfg_gen.loadLoc(p.getName()));
-					p.sendMessage("§cMerkel: §7Du wurdest zu deinem Home §c/home §7gebracht.");
+					p.sendMessage("§cMerkel: §7Du wurdest zu deinem §cHome §7gebracht.");
 				} catch (IOException | InvalidConfigurationException e) {
 					System.out.println("something went wrong!");
 					e.printStackTrace();

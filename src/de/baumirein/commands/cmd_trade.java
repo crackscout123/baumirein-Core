@@ -15,6 +15,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryCloseEvent;
+import org.bukkit.event.inventory.InventoryMoveItemEvent;
+import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
@@ -70,7 +72,25 @@ public class cmd_trade implements CommandExecutor, Listener{
     	if(e.getView().getTitle().equals("§bTRADECHEST")){
 			cmd_trade.save(inv);
     	}
+    	
     }
+	
+	@EventHandler
+	public static void putInventory(InventoryMoveItemEvent e) {
+		if(e.getDestination().getType().equals(InventoryType.CHEST)) {
+			//Inventory p_inv = e.getDestination();
+			Inventory trade = e.getSource();
+			
+			if(trade == inv) {
+								
+			System.out.println("debug");
+			}
+			
+			
+			
+		}
+		
+	}
 }
 
 

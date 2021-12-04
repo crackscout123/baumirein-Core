@@ -19,7 +19,7 @@ public class cmd_tpr implements CommandExecutor{
 					Main.tpa.put(t,p);
 					//putting p (command executer as value and & p [player] as key)
 					p.sendMessage("§cMerkel: §7Teleportanfrage an §c" + t.getDisplayName()+ " §7wurde gesendet.");
-					t.sendMessage("§cMerkel: §7Teleportanfrage von §c" + p.getDisplayName()+ " §7will zu dir §c/tpa §zum annehmen & §c/tpd §7zum ablehnen.");
+					t.sendMessage("§cMerkel: §7Teleportanfrage von §c" + p.getDisplayName()+ " §7will zu dir §c/tpa §7zum annehmen & §c/tpd §7zum ablehnen.");
 				} else {
 					p.sendMessage("§cMerkel: §7Der Spieler §c" + a[0] + " §7wurde nicht gefunden.");
 				}
