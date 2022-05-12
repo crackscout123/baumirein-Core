@@ -18,19 +18,22 @@ import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryMoveItemEvent;
 import org.bukkit.event.inventory.InventoryType;
 import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
 
 public class cmd_trade implements CommandExecutor, Listener{
 
 	
-	public static Inventory inv = Bukkit.createInventory(null, 45, "§bTRADECHEST");    
+	public static Inventory inv;
 	
 
 	static File ifile = new File("plugins/LovlyCraft-Core/Chest", "tradechest.yml");
 	static FileConfiguration icfg = YamlConfiguration.loadConfiguration(ifile);
 	
+	@SuppressWarnings("deprecation")
 	@Override
 	public boolean onCommand(CommandSender s, Command c, String l, String[] a) {
+		inv = Bukkit.createInventory((InventoryHolder) Bukkit.getOfflinePlayer("Notch"), 45, "§bTRADECHEST"); 
 		if(s instanceof Player) {
 			Player p = (Player)s;
 			if (a.length == 0){
@@ -77,20 +80,33 @@ public class cmd_trade implements CommandExecutor, Listener{
 	
 	@EventHandler
 	public static void putInventory(InventoryMoveItemEvent e) {
-		if(e.getDestination().getType().equals(InventoryType.CHEST)) {
+		
+		if(e.getDestination().getType().equals(InventoryType.PLAYER)){
 			//Inventory p_inv = e.getDestination();
 			Inventory trade = e.getSource();
-			
-			if(trade == inv) {
-								
-			System.out.println("debug");
-			}
-			
-			
+			if(e.getDestination() == inv) {
+				save(trade);
+				System.out.println("saved!");
+			}			
 			
 		}
 		
 	}
+	
+//	@EventHandler
+//	public static void itemMove(InventoryClickEvent e) {
+//
+//		Inventory target = e.getClickedInventory();
+//    	if(e.getView().getTitle().equals("§bTRADECHEST")){
+//    		if(e.getClickedInventory().getType() == InventoryType.CHEST) {
+//    			System.out.println("dd");
+//    			ItemStack clicked = e.getCurrentItem();
+//    			
+//    		}
+//    	}
+//		
+//		
+//	}
 }
 
 

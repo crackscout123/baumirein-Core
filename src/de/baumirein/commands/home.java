@@ -8,6 +8,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.entity.Player;
 
+import de.baumirein.Main;
 import de.baumirein.commands.warps.cfg_gen;
 
 public class home implements CommandExecutor {
@@ -17,6 +18,7 @@ public class home implements CommandExecutor {
 		if(s instanceof Player) {
 			if(a.length == 0) {
 				Player p = (Player)s;
+				Main.lastLocation.put(p, p.getLocation()); // saving current Location for /back
 				try {
 					p.teleport(cfg_gen.loadLoc(p.getName()));
 					p.sendMessage("§cMerkel: §7Du wurdest zu deinem §cHome §7gebracht.");

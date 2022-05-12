@@ -15,6 +15,7 @@ public class cmd_tpa implements CommandExecutor{
 			if(Main.tpa.containsKey(p)) {
 			Player t = Main.tpa.get(p);
 				if(t.isOnline()) {
+					Main.lastLocation.put(p, p.getLocation()); // saving current Location for /back
 					t.teleport(p.getLocation());
 					t.sendMessage("§cMerkel: §7Du wurdest zu §c"+ p.getDisplayName() +"§7 gebracht.");
 					Main.tpa.remove(p);

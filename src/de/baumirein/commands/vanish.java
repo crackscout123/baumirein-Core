@@ -28,7 +28,6 @@ public class vanish implements CommandExecutor {
 								p.setGameMode(GameMode.SURVIVAL);
 							}
 							p.sendMessage("§cSystem: §7Du befindest dich nicht mehr im §cVanish§7.");
-							actionBar(p, "§7Du befindest dich nicht mehr im §cVanish§7.", 72000);
 						}else {
 							for(Player team : Bukkit.getOnlinePlayers()) {
 								team.hidePlayer(p);
@@ -36,7 +35,6 @@ public class vanish implements CommandExecutor {
 								p.setGameMode(GameMode.SPECTATOR);
 							}
 							p.sendMessage("§cSystem: §7Du befindest dich nun im §cVanish§7.");
-							actionBar(p, "§7Du befindest dich nun im §cVanish§7.", 72000);
 						}
 						
 					}

@@ -1,9 +1,12 @@
 name: baumirein-Core
-version: 1.6.2.1-Alpha
+version: 1.7.2-Alpha
+api-version: 1.18
 author: baumirein
 main: de.baumirein.Main
 
 commands:
+  force:
+  back:
   invsee:
   trade:
   tpd:
