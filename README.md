@@ -1,2 +1,2 @@
-# baumirein-Core
- Just a plugin for a private Minecraft-Server
+# PROJECT MOVED
+ moved tp[**crack-Core**](https://github.com/crackscout123/crack-Core).
